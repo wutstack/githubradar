@@ -1,1 +1,1078 @@
-[]
+[
+  {
+    "repo": "konlu/story-studio",
+    "summary": "Skill ให้ Claude Code/Codex/Cursor ทำคลิปสั้นเล่าเรื่องประวัติศาสตร์ครบวงจร ตั้งแต่หาหัวข้อ เขียนบท พากย์เสียง ทำภาพ จนได้โปรเจกต์ CapCut (剪映)",
+    "tags": [
+      "Video",
+      "Skill"
+    ],
+    "keywords": [
+      "คลิปสั้น",
+      "เล่าเรื่อง",
+      "ประวัติศาสตร์",
+      "capcut",
+      "จิอานอิง",
+      "พากย์เสียง",
+      "short video"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "speridlabs/idol-sdk",
+    "summary": "แปลงรูปภาพเดียวเป็นโมเดล 3D แบบ Gaussian Splat รวมด้านที่รูปไม่เห็น รันบนการ์ดจอทั่วไป ไม่ถึง 2 วินาที",
+    "tags": [
+      "3D",
+      "AI Model"
+    ],
+    "keywords": [
+      "รูปเป็น 3d",
+      "image to 3d",
+      "gaussian splatting",
+      "3dgs"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "IVibeStuff/agent-office",
+    "summary": "ออฟฟิศ 3D สดในเบราว์เซอร์ ให้เห็นว่า AI agent แต่ละตัวกำลังทำงาน รอเรา หรือส่งงานต่อกันอยู่",
+    "tags": [
+      "Agent Tools",
+      "3D"
+    ],
+    "keywords": [
+      "ดูสถานะ agent",
+      "office",
+      "dashboard agent",
+      "mcp"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "opengeos/GeoLibre",
+    "summary": "แพลตฟอร์ม GIS โอเพนซอร์ส เบาและรันบนคลาวด์ สำหรับดูและวิเคราะห์ข้อมูลแผนที่",
+    "tags": [
+      "Data",
+      "Tools"
+    ],
+    "keywords": [
+      "แผนที่",
+      "gis",
+      "geospatial",
+      "map"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "ashishpatel26/500-AI-Agents-Projects",
+    "summary": "รวมโปรเจกต์และตัวอย่างการใช้ AI agent กว่า 500 แบบ แยกตามอุตสาหกรรมและเฟรมเวิร์ก",
+    "tags": [
+      "Learning",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "ตัวอย่าง agent",
+      "awesome list",
+      "langgraph",
+      "crewai",
+      "use case"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "actionow-ai/vvv",
+    "summary": "ทำวิดีโอจากเทมเพลตด้วย agent สลับรูปและข้อความของเราเข้าไปในหนังต้นแบบ ตัดตามจังหวะเพลง",
+    "tags": [
+      "Video",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "เทมเพลตวิดีโอ",
+      "ตัดต่อ",
+      "video template",
+      "beat"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "Motionsites-AI/claude-skill",
+    "summary": "Skill ให้ Claude ทำ landing page สไตล์ภาพยนตร์ระดับรางวัล โดยศึกษาดีไซน์ยอดนิยม แล้วถ่ายหน้าจอตรวจงานตัวเอง",
+    "tags": [
+      "Design",
+      "Skill"
+    ],
+    "keywords": [
+      "landing page",
+      "เว็บสวย",
+      "web design",
+      "cinematic"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "elwinhe/forgegui-plugins",
+    "summary": "MCP ของ ForgeGUI สำหรับ Claude Code ใช้สร้าง GUI ในเกม Roblox (Luau)",
+    "tags": [
+      "Agent Tools",
+      "Design"
+    ],
+    "keywords": [
+      "roblox",
+      "luau",
+      "gui",
+      "mcp"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "janestreet/agent_skills",
+    "summary": "Skill จาก Jane Street ตอนนี้มี socratic-tutor ให้ AI สอนแบบถามตอบทีละข้อ มีแบบทดสอบและทบทวนเป็นระยะ",
+    "tags": [
+      "Skill",
+      "Learning"
+    ],
+    "keywords": [
+      "ติวเตอร์",
+      "สอน",
+      "socratic",
+      "tutor",
+      "เรียน"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "elvarofficial/teardown",
+    "summary": "Skill ให้ Claude สร้างเครื่องจักรเป็นแบบจำลอง 3D ที่แยกชิ้นส่วนดูได้ในหน้า HTML เดียว เพื่ออธิบายว่าทำงานยังไง",
+    "tags": [
+      "3D",
+      "Skill"
+    ],
+    "keywords": [
+      "อธิบายเครื่องจักร",
+      "simulator",
+      "แยกชิ้นส่วน",
+      "explainer"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "Soul-Brews-Studio/arra-oracle-skills-cli",
+    "summary": "ชุด 25 skill สำหรับ AI coding agent เน้นความจำถาวรและรู้บริบทข้ามเซสชัน รองรับ 19 agent",
+    "tags": [
+      "Skill",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "memory",
+      "ความจำ",
+      "session",
+      "oracle"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "surapas3022/ai-secure-audit",
+    "summary": "ตรวจความปลอดภัยแอปที่สร้างด้วย AI ด้วยคำสั่งเดียว มีคู่มือภาษาไทยสำหรับมือใหม่",
+    "tags": [
+      "Security",
+      "ภาษาไทย"
+    ],
+    "keywords": [
+      "ตรวจความปลอดภัย",
+      "secret",
+      "api key รั่ว",
+      "vibe coding",
+      "npx"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "Shaitrish/37studio",
+    "summary": "สตูดิโอทำวิดีโอและดูแลโซเชียลของแบรนด์ รันบนเครื่องตัวเองด้วยคีย์ของเรา ไม่มีค่ารายเดือน",
+    "tags": [
+      "Video",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "โซเชียลมีเดีย",
+      "ทำคอนเทนต์",
+      "แบรนด์",
+      "hyperframes"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "jmanico/grim-prompter",
+    "summary": "ชุด prompt ให้ coding agent ทำ threat model จากโค้ดจริงของโปรเจกต์ พร้อมหลักฐานตรวจสอบได้",
+    "tags": [
+      "Security",
+      "Skill"
+    ],
+    "keywords": [
+      "threat model",
+      "ความเสี่ยง",
+      "privacy",
+      "security review"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "anefzaoui/misterdownloadmanager",
+    "summary": "โปรแกรมดาวน์โหลดไฟล์ฟรี เร็วกว่า IDM มีส่วนขยายสำหรับเบราว์เซอร์",
+    "tags": [
+      "Tools"
+    ],
+    "keywords": [
+      "ดาวน์โหลด",
+      "idm",
+      "download manager",
+      "rust"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "t3dotgg/tstack",
+    "summary": "ชุด skill ที่ Theo ใช้ทุกวันใน Claude Code และ Codex เช่น ดูแล PR จนถึง merge และประชุมหลายโมเดล",
+    "tags": [
+      "Skill",
+      "Dev Tools"
+    ],
+    "keywords": [
+      "theo",
+      "pr",
+      "code review",
+      "council"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "anomalyco/rune",
+    "summary": "เฟรมเวิร์ก UI ภาษา Rust เรนเดอร์ด้วย GPU ใช้ได้ทั้งเดสก์ท็อปและเว็บ agent สั่งเรนเดอร์เป็นรูปเพื่อตรวจงานได้",
+    "tags": [
+      "Dev Tools",
+      "Design"
+    ],
+    "keywords": [
+      "rust ui",
+      "gpu",
+      "framework",
+      "desktop app"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "voyager-so/vork",
+    "summary": "เอนจิน 3D และ VFX ที่ให้ AI agent เขียนฉากเป็นโค้ด แล้วเรนเดอร์บน GPU เร็วมาก",
+    "tags": [
+      "3D",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "vfx",
+      "render",
+      "shader",
+      "blender"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "kargulstudio/calender-app-design",
+    "summary": "ต้นแบบดีไซน์แอปปฏิทินและลางาน สร้างจาก Figma ด้วย Next.js",
+    "tags": [
+      "Design"
+    ],
+    "keywords": [
+      "ปฏิทิน",
+      "calendar",
+      "dashboard",
+      "figma",
+      "nextjs"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "mokevnin/dev-quality-gates",
+    "summary": "รายชื่อเครื่องมือคุมคุณภาพโค้ด คัดมาให้งานละหนึ่งตัวพร้อมเหตุผล",
+    "tags": [
+      "Dev Tools",
+      "Learning"
+    ],
+    "keywords": [
+      "linter",
+      "code quality",
+      "ci",
+      "คุณภาพโค้ด"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "artemnovitckii/claude-animation-skills",
+    "summary": "Skill ให้ Claude ทำแอนิเมชันสำหรับ Reels โดยไม่ต้องมีฟุตเทจ เช่น เส้นทางบนแผนที่ คลิปอธิบาย 3D",
+    "tags": [
+      "Animation",
+      "Skill"
+    ],
+    "keywords": [
+      "reels",
+      "แอนิเมชัน",
+      "instagram",
+      "map route"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "morluto/rea",
+    "summary": "MCP สำหรับ reverse engineer ทุกอย่าง ตั้งแต่พฤติกรรมแอปจนถึงระดับไบนารี",
+    "tags": [
+      "Security",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "reverse engineering",
+      "ถอดแอป",
+      "binary",
+      "mcp"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "XiaoyeCodes/code-animation-prompts",
+    "summary": "คลัง prompt สไตล์แอนิเมชันด้วยโค้ด 341 แบบ พร้อมภาพตัวอย่าง ใช้เป็น skill ได้",
+    "tags": [
+      "Animation",
+      "Skill"
+    ],
+    "keywords": [
+      "prompt",
+      "สไตล์",
+      "neon",
+      "particle",
+      "จีน"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "public-apis/public-apis",
+    "summary": "รายชื่อ API ฟรีจำนวนมาก แยกหมวดหมู่ ไว้หา API มาใช้ในโปรเจกต์",
+    "tags": [
+      "Learning",
+      "Dev Tools"
+    ],
+    "keywords": [
+      "api ฟรี",
+      "free api",
+      "public api"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "abdiraimov-otabek/dashboard-design-skill",
+    "summary": "Skill ให้ Claude ออกแบบ dashboard ที่สะอาดและซื่อตรงต่อข้อมูล ตรวจจากภาพหน้าจอจริงก่อนส่ง",
+    "tags": [
+      "Design",
+      "Skill"
+    ],
+    "keywords": [
+      "dashboard",
+      "กราฟ",
+      "kpi",
+      "chart"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "sloemo01/diorama",
+    "summary": "คู่มือและโค้ดสำหรับสร้างฉาก diorama 3D ละเอียดด้วย Three.js",
+    "tags": [
+      "3D",
+      "Skill"
+    ],
+    "keywords": [
+      "threejs",
+      "ฉากจำลอง",
+      "diorama"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "caru-ini/stack-diagram",
+    "summary": "Skill บอก stack เป็นประโยค แล้วได้ไดอะแกรมสถาปัตยกรรมพร้อมโลโก้จริง",
+    "tags": [
+      "Design",
+      "Skill"
+    ],
+    "keywords": [
+      "ไดอะแกรม",
+      "architecture",
+      "stack",
+      "diagram"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "sleepy-zone/ai-ref-library-cn",
+    "summary": "คลังภาพอ้างอิงสำหรับ AI วาดภาพ หน้า ท่าทาง ชุด พร้อมสุ่มรวมและสร้าง prompt (ภาษาจีน)",
+    "tags": [
+      "Design",
+      "AI Model"
+    ],
+    "keywords": [
+      "ภาพอ้างอิง",
+      "pose",
+      "ท่าทาง",
+      "prompt ภาพ"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "lovisdotio/video-to-game",
+    "summary": "Skill เปลี่ยนวิดีโอเกมเพลย์ให้เป็นเกมเล่นได้จริงในเบราว์เซอร์ด้วย Three.js",
+    "tags": [
+      "3D",
+      "Skill"
+    ],
+    "keywords": [
+      "ทำเกม",
+      "game",
+      "threejs",
+      "fal"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "hyz317/HairDeck",
+    "summary": "งานวิจัยสร้างผมแบบ hair card พร้อมทำแอนิเมชันจากรูปเดียว ส่งออก GLB/VRM",
+    "tags": [
+      "3D",
+      "AI Model"
+    ],
+    "keywords": [
+      "ผม",
+      "hair",
+      "vrm",
+      "avatar",
+      "research"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "JakkapatB/open-effort",
+    "summary": "mod ของ Claude Code ปรับระดับความคิดให้พอดีงาน และเปลี่ยนไปโมเดลที่แรงขึ้นเมื่อจำเป็น (มีภาษาไทย)",
+    "tags": [
+      "Agent Tools",
+      "ภาษาไทย"
+    ],
+    "keywords": [
+      "effort",
+      "ประหยัด token",
+      "claude code mod"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "andyhuo520/vibe-knowledge",
+    "summary": "Skill ทำคลิปอธิบายความรู้แบบมีแหล่งอ้างอิง ตั้งแต่ค้นข้อมูล เขียนบท พากย์ จนเรนเดอร์วิดีโอ",
+    "tags": [
+      "Video",
+      "Skill"
+    ],
+    "keywords": [
+      "explainer",
+      "คลิปความรู้",
+      "พากย์",
+      "1080p"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "emanuele-em/kanzo",
+    "summary": "กระดาน kanban ในเบราว์เซอร์ที่เป็น MCP server ด้วย ให้เราและ agent ทำงานบนบอร์ดเดียวกัน",
+    "tags": [
+      "Agent Tools",
+      "Tools"
+    ],
+    "keywords": [
+      "kanban",
+      "task",
+      "todo",
+      "mcp"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "Humpalumps/Ultra-Water",
+    "summary": "ตัวเรนเดอร์ทะเลแบบเรียลไทม์สำหรับ Three.js พร้อมฉากเกาะตัวอย่าง",
+    "tags": [
+      "3D"
+    ],
+    "keywords": [
+      "น้ำ",
+      "ทะเล",
+      "ocean",
+      "webgl"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "Ryder191/haloflux",
+    "summary": "ภาพแสดงข้อมูลไซไฟเต้นตามจังหวะเพลง ไฟล์ HTML เดียว ไม่ใช้ไลบรารี (ห้ามใช้เชิงพาณิชย์)",
+    "tags": [
+      "Animation",
+      "Design"
+    ],
+    "keywords": [
+      "sci-fi",
+      "visualizer",
+      "canvas",
+      "เพลง"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "Vibha-Ramprakash/claude-video-effects",
+    "summary": "เอฟเฟกต์วิดีโอฟรี 51 แบบสำหรับ Reels/TikTok/Shorts ใช้ใน Claude Code ด้วยคำสั่ง /effects",
+    "tags": [
+      "Video",
+      "Skill"
+    ],
+    "keywords": [
+      "เอฟเฟกต์",
+      "tiktok",
+      "reels",
+      "shorts"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "songjianyang/xss-audit",
+    "summary": "Skill ตรวจช่องโหว่ XSS ในโค้ด React/TypeScript แบบ static 14 ชั้น ออกรายงานเป็นไฟล์",
+    "tags": [
+      "Security",
+      "Skill"
+    ],
+    "keywords": [
+      "xss",
+      "ช่องโหว่",
+      "react",
+      "audit"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "rlaope/oh-my-hermes",
+    "summary": "ชั้นจัดการงานสำหรับ Hermes Agent เลือก skill และโมเดลให้แต่ละงาน และทำงานขนานกัน",
+    "tags": [
+      "Agent Tools"
+    ],
+    "keywords": [
+      "hermes",
+      "orchestration",
+      "parallel"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "microsoft/skill-recorder",
+    "summary": "อัดหน้าจอตอนเราทำงานครั้งเดียว แล้วแปลงเป็น skill ให้ AI agent ทำซ้ำได้",
+    "tags": [
+      "Agent Tools",
+      "Skill"
+    ],
+    "keywords": [
+      "บันทึกขั้นตอน",
+      "อัดหน้าจอ",
+      "microsoft",
+      "automation"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "luongnv89/claude-howto",
+    "summary": "คู่มือเรียน Claude Code ตั้งแต่เริ่มจนใช้ agent, hooks, skills และ MCP เป็น พร้อมเทมเพลต",
+    "tags": [
+      "Learning",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "สอน claude code",
+      "tutorial",
+      "hooks",
+      "คู่มือ"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "plugin87/ux-ui-agent-skills",
+    "summary": "ชุด skill ด้าน UX/UI พร้อมด่านตรวจ 52 ข้อ และข้อมูล design system กว่า 2,000 แบบ",
+    "tags": [
+      "Design",
+      "Skill"
+    ],
+    "keywords": [
+      "ux",
+      "ui",
+      "design system",
+      "ตรวจดีไซน์"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "aicodeking/leanrea",
+    "summary": "Skill ไฟล์เดียวที่ทำงานแบบ REA โดยไม่ต้องติดตั้ง MCP บอก agent ว่าควรใช้เครื่องมือ reverse engineer ตัวไหน",
+    "tags": [
+      "Security",
+      "Skill"
+    ],
+    "keywords": [
+      "reverse engineering",
+      "rea",
+      "ghidra"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "cursor/plugins",
+    "summary": "ปลั๊กอินทางการของ Cursor สำหรับเครื่องมือและบริการยอดนิยม",
+    "tags": [
+      "Dev Tools",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "cursor",
+      "plugin",
+      "ปลั๊กอิน"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "ShawnPana/phone-harness",
+    "summary": "ให้ Claude Code หรือ agent อื่นใช้มือถือจริงของเรา แตะ เลื่อน พิมพ์ อ่านหน้าจอ ทั้ง iPhone และ Android",
+    "tags": [
+      "Agent Tools",
+      "Tools"
+    ],
+    "keywords": [
+      "มือถือ",
+      "iphone",
+      "android",
+      "adb",
+      "automation"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "google/ax",
+    "summary": "ตัวจัดการรัน AI agent จำนวนมากในคลัสเตอร์แบบ declarative จาก Google (ยังพัฒนาอยู่)",
+    "tags": [
+      "Agent Tools",
+      "Dev Tools"
+    ],
+    "keywords": [
+      "orchestrator",
+      "cluster",
+      "sandbox",
+      "google"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "wheresryan22/anatomy",
+    "summary": "Skill อธิบายไอเดียด้วยการสร้างวัตถุที่ทำงานได้จริง ภาพไอโซเมตริกละเอียดแบบโต้ตอบ",
+    "tags": [
+      "Design",
+      "Skill"
+    ],
+    "keywords": [
+      "isometric",
+      "explainer",
+      "svg",
+      "อธิบาย"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "alchaincyf/huashu-art-motion",
+    "summary": "Skill เปลี่ยนสไตล์ศิลปะ 36 แบบให้เป็นภาพเคลื่อนไหว และทำคลิปอธิบาย (คู่มือหลักเป็นภาษาจีน)",
+    "tags": [
+      "Animation",
+      "Skill"
+    ],
+    "keywords": [
+      "ศิลปะ",
+      "art style",
+      "motion",
+      "จีน"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "cth9191/animate",
+    "summary": "Skill ทำวิดีโอแอนิเมชันสั้นด้วยโค้ดล้วน หลายสไตล์ เช่น ตัดกระดาษ ลายเส้น พิกเซล เรนเดอร์เป็น MP4",
+    "tags": [
+      "Animation",
+      "Skill"
+    ],
+    "keywords": [
+      "แอนิเมชัน",
+      "mp4",
+      "procedural",
+      "explainer"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "r34vtraining/Longshot_Studio",
+    "summary": "สตูดิโอใน ComfyUI สำหรับทำวิดีโอ AI ยาวด้วย MiniMax H3 ทีละช็อตแล้วต่อเป็นเรื่อง",
+    "tags": [
+      "Video",
+      "AI Model"
+    ],
+    "keywords": [
+      "comfyui",
+      "minimax",
+      "วิดีโอยาว",
+      "long video"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "BeCutzo/be-cutzo-releases",
+    "summary": "โปรแกรมช่วยตัดคลิปพูดภาษาไทยด้วย AI (Public Beta) สำหรับ Windows และ Mac",
+    "tags": [
+      "Video",
+      "ภาษาไทย"
+    ],
+    "keywords": [
+      "ตัดคลิป",
+      "ตัดต่อ",
+      "คลิปพูด",
+      "ไทย"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "anthropics/oss-scanner",
+    "summary": "บริการของ Anthropic สแกนหาช่องโหว่ในโปรเจกต์โอเพนซอร์สสำคัญ สมัครด้วยการเปิด PR",
+    "tags": [
+      "Security"
+    ],
+    "keywords": [
+      "ช่องโหว่",
+      "vulnerability",
+      "anthropic",
+      "open source"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "Tencent-Hunyuan/Hy-MT2",
+    "summary": "โมเดลแปลภาษาจาก Tencent แปลได้ 33 ภาษา มี 3 ขนาดตั้งแต่ 1.8B",
+    "tags": [
+      "AI Model"
+    ],
+    "keywords": [
+      "แปลภาษา",
+      "translation",
+      "tencent",
+      "llm"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "cloudflare/security-audit-skill",
+    "summary": "Skill จาก Cloudflare ให้ agent ตรวจหาช่องโหว่ในโปรเจกต์อย่างเป็นขั้นตอน พร้อมยืนยันผล",
+    "tags": [
+      "Security",
+      "Skill"
+    ],
+    "keywords": [
+      "ช่องโหว่",
+      "audit",
+      "cloudflare",
+      "pentest"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "mhtsec/ARTEX",
+    "summary": "",
+    "tags": [
+      "Security"
+    ],
+    "keywords": [],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "getpaseo/paseo",
+    "summary": "รวม Claude Code, Codex, Copilot และ agent อื่นไว้ในหน้าเดียว รันบนเครื่องเรา สั่งจากมือถือหรือเสียงได้",
+    "tags": [
+      "Agent Tools"
+    ],
+    "keywords": [
+      "หลาย agent",
+      "มือถือ",
+      "voice",
+      "self-host"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "microsoft/generative-ai-for-beginners",
+    "summary": "คอร์สฟรีจาก Microsoft 21 บท สอนสร้างแอป Generative AI ตั้งแต่พื้นฐาน",
+    "tags": [
+      "Learning"
+    ],
+    "keywords": [
+      "คอร์ส",
+      "เรียน ai",
+      "microsoft",
+      "beginner"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "garylab/MakeMoneyWithAI",
+    "summary": "รวมเครื่องมือ AI และโปรเจกต์โอเพนซอร์สพร้อมไอเดียหาเงินจากแต่ละตัว",
+    "tags": [
+      "Learning"
+    ],
+    "keywords": [
+      "หาเงิน",
+      "รายได้",
+      "side hustle",
+      "awesome list"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "HarnessRouter/harnessrouter",
+    "summary": "API เดียวสำหรับใช้ Codex, Claude Code และ harness อื่นเป็น backend ของแอปเรา สลับตัวได้",
+    "tags": [
+      "Agent Tools",
+      "Dev Tools"
+    ],
+    "keywords": [
+      "harness",
+      "api",
+      "backend",
+      "claude code"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "TencentCloud/TencentDB-Agent-Memory",
+    "summary": "ระบบความจำระยะยาวสำหรับ AI agent จาก Tencent มีแบบรันเครื่องเดียวและแบบคลาวด์",
+    "tags": [
+      "Agent Tools",
+      "Data"
+    ],
+    "keywords": [
+      "memory",
+      "ความจำ",
+      "hermes",
+      "tencent"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "jordan-gibbs/hyperresearch",
+    "summary": "Skill ทำ deep research ใน Claude Code และ Codex ได้รายงานที่ตรวจทานแล้วพร้อมแหล่งอ้างอิง",
+    "tags": [
+      "Skill",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "deep research",
+      "ค้นคว้า",
+      "รายงาน",
+      "research"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "skillsgate/skillsgate",
+    "summary": "แอปเดสก์ท็อปจัดการ skill ของ AI agent ค้นหาและติดตั้งให้ agent กว่า 20 ตัวในคลิกเดียว",
+    "tags": [
+      "Agent Tools",
+      "Tools"
+    ],
+    "keywords": [
+      "skill manager",
+      "ติดตั้ง skill",
+      "desktop app"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "Tencent/teamai-cli",
+    "summary": "จัดการ skills, rules, MCP และความรู้ของทีมใน git repo เดียว ให้ทุกคนในทีมซิงก์อัตโนมัติ",
+    "tags": [
+      "Agent Tools",
+      "Dev Tools"
+    ],
+    "keywords": [
+      "ทีม",
+      "team",
+      "rules",
+      "tencent"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "rachatarath-wq/aipass-th-release",
+    "summary": "แอปเชื่อม TH-AI Passport (AiPASS) ให้เรียกใช้จาก Claude CLI ได้",
+    "tags": [
+      "ภาษาไทย",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "aipass",
+      "ai passport",
+      "ไทย",
+      "claude cli"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "cathrynlavery/diagram-design",
+    "summary": "Skill วาดไดอะแกรม 45 แบบเป็นไฟล์ HTML+SVG ไฟล์เดียว ตามสีแบรนด์ของเรา",
+    "tags": [
+      "Design",
+      "Skill"
+    ],
+    "keywords": [
+      "ไดอะแกรม",
+      "diagram",
+      "svg",
+      "architecture"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "b-nnett/grok-bot-0.18-reconstructed",
+    "summary": "โค้ดที่ถอดและเขียนใหม่ของแอป Grok Bot 0.18 บน macOS (ไม่เป็นทางการ) พร้อมเครื่องมือ build กลับเป็นแอป",
+    "tags": [
+      "Security",
+      "Learning"
+    ],
+    "keywords": [
+      "grok",
+      "reverse engineering",
+      "electron",
+      "macos"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "openai/tiktoken",
+    "summary": "ตัวตัด token แบบ BPE ที่เร็วมาก สำหรับนับและตัด token ของโมเดล OpenAI",
+    "tags": [
+      "Dev Tools",
+      "AI Model"
+    ],
+    "keywords": [
+      "token",
+      "นับ token",
+      "tokenizer",
+      "openai"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "moomdate/CYD-PromptPay-Terminal",
+    "summary": "เครื่องรับเงิน PromptPay จิ๋วจาก ESP32 จอสัมผัส สร้าง QR ผ่าน Stripe แล้วแจ้งเมื่อจ่ายสำเร็จ",
+    "tags": [
+      "Hardware",
+      "ภาษาไทย"
+    ],
+    "keywords": [
+      "พร้อมเพย์",
+      "esp32",
+      "qr",
+      "stripe",
+      "รับเงิน"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  },
+  {
+    "repo": "mattpocock/skills",
+    "summary": "ชุด skill ที่ Matt Pocock ใช้ทำงานวิศวกรรมจริง เล็ก ปรับง่าย ใช้กับโมเดลไหนก็ได้",
+    "tags": [
+      "Skill",
+      "Dev Tools"
+    ],
+    "keywords": [
+      "matt pocock",
+      "typescript",
+      "engineering"
+    ],
+    "note": "",
+    "added": "2026-11-11"
+  }
+]

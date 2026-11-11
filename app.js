@@ -42,7 +42,7 @@
   const LEAD = /^(อันที่|ตัวที่|ที่เคย|ที่ใช้|ที่)/;
   const TAIL = /(ได้|ไว้|อยู่)$/;
 
-  const state = { items: [], tags: new Set(), query: "", sort: "added", fuse: null, sectors: [], picked: null };
+  const state = { items: [], tags: new Set(), query: "", sort: "added", fuse: null, sectors: [], picked: null, rank: new Map() };
 
   /* ---------------- data ---------------- */
   async function loadData() {
@@ -79,10 +79,22 @@
   }
 
   /* ---------------- search ---------------- */
+  // ภาษาไทยไม่เว้นวรรค ต้องตัดคำก่อน ("ตัดคลิปภาษาไทย" -> ตัด, คลิป, ภาษาไทย)
+  const THAI = /[\u0E00-\u0E7F]/;
+  const seg = typeof Intl !== "undefined" && Intl.Segmenter ? new Intl.Segmenter("th", { granularity: "word" }) : null;
+  const splitThai = (t) => (seg && THAI.test(t) ? [...seg.segment(t)].filter((x) => x.isWordLike).map((x) => x.segment) : [t]);
   function terms(q) {
-    return q.toLowerCase().split(/[\s,]+/)
-      .map((t) => t.replace(LEAD, "").replace(TAIL, "").trim())
-      .filter((t) => t && !STOP.has(t));
+    const out = [];
+    const spaced = q.toLowerCase().replace(/([\u0E00-\u0E7F])([a-z0-9])/g, "$1 $2").replace(/([a-z0-9])([\u0E00-\u0E7F])/g, "$1 $2");
+    for (const raw of spaced.split(/[\s,]+/)) {
+      const t = raw.replace(LEAD, "").replace(TAIL, "").trim();
+      if (!t || STOP.has(t)) continue;
+      out.push(t);
+      // เก็บคำเต็มไว้ด้วย แล้วเพิ่มคำย่อยที่ตัดได้
+      const parts = splitThai(t).filter((w) => w.length >= 2 && !STOP.has(w));
+      if (parts.length > 1) out.push(...parts);
+    }
+    return [...new Set(out)];
   }
 
   function score(q) {
@@ -90,15 +102,20 @@
     if (!ts.length) return null;
     const out = new Map();
     const add = (id, s) => out.set(id, (out.get(id) || 0) + s);
+    const N = state.items.length || 1;
     for (const t of ts) {
+      const hits = [];
       for (const it of state.items) {
         let s = 0;
         if (it._name.includes(t)) s += 6;
         if (it._tags.includes(t)) s += 5; else if (it._tags.some((x) => x.includes(t))) s += 3;
         if (it._kw.includes(t)) s += 4;
         if (it._text.includes(t)) s += 2;
-        if (s) add(it.id, s);
+        if (s) hits.push([it.id, s]);
       }
+      // คำที่เจอใน repo น้อยตัวบอกได้ชัดกว่า จึงได้น้ำหนักมากกว่า
+      const idf = Math.log(1 + N / Math.max(1, hits.length));
+      hits.forEach(([id, s]) => add(id, s * idf));
       if (state.fuse && t.length >= 3) {
         for (const r of state.fuse.search(t)) if (r.score < 0.34) add(r.item.id, (1 - r.score) * 1.6);
       }
@@ -123,7 +140,7 @@
       [...state.tags].every((t) => it.tags.includes(t)) && (!scores || scores.has(it.id)));
     if (scores) return list.sort((a, b) => scores.get(b.id) - scores.get(a.id));
     const by = {
-      added: (a, b) => b.added - a.added,
+      added: (a, b) => b.added - a.added || a.id - b.id,
       stars: (a, b) => (b.meta.stars ?? -1) - (a.meta.stars ?? -1),
       pushed: (a, b) => new Date(b.meta.pushed_at || 0) - new Date(a.meta.pushed_at || 0),
       name: (a, b) => a.name.localeCompare(b.name),
@@ -160,10 +177,11 @@
     const sec = sectorOf(it);
     const span = (Math.PI * 2) / n;
     const a = -Math.PI / 2 + span * sec + span * (0.18 + 0.64 * hash(it.repo));
-    const age = (now - it.added) / DAY;
-    const ri = RINGS.findIndex((r) => age <= r.days);
-    const inner = (R / RINGS.length) * ri, outer = (R / RINGS.length) * (ri + 1);
-    const rr = Math.max(14, inner + (outer - inner) * (0.2 + 0.6 * hash(it.repo + "r")));
+    // ระยะจากศูนย์กลางตามลำดับที่เก็บ (ใหม่ใกล้ศูนย์กลาง) กระจายเท่า ๆ กันตามพื้นที่วง
+    const n2 = state.items.length || 1;
+    const rank = state.rank.get(it.id) ?? 0;
+    const jitter = (hash(it.repo + "r") - 0.5) * 0.8;
+    const rr = 16 + (R - 20) * Math.sqrt(Math.min(1, Math.max(0, (rank + 0.5 + jitter) / n2)));
     return { x: C + rr * Math.cos(a), y: C + rr * Math.sin(a) };
   }
 
@@ -176,9 +194,6 @@
     RINGS.forEach((ring, i) => {
       const r = (R / RINGS.length) * (i + 1);
       root.append(svg("circle", { class: "ring", cx: C, cy: C, r }));
-      const t = svg("text", { class: "ring-label", x: C + 4, y: C - r + 12 });
-      t.textContent = ring.label;
-      root.append(t);
     });
     for (let i = 0; i < n; i++) {
       const a = -Math.PI / 2 + ((Math.PI * 2) / n) * i;
@@ -373,6 +388,7 @@
     }
     state.fuse = buildFuse();
     state.sectors = computeSectors();
+    [...state.items].sort((a, b) => b.added - a.added || a.id - b.id).forEach((it, i) => state.rank.set(it.id, i));
 
     renderTags();
     drawRadar();
