@@ -324,8 +324,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 24px 64px; }
 .btn-line:hover { border-color: var(--ink); }
 
 .noscript { padding: 24px; }
-.foot { max-width: 1180px; margin: 0 auto; padding: 0 24px 40px; font-size: .9rem; }
-.foot a { color: var(--muted); }
 
 /* ---------- responsive ---------- */
 @media (max-width: 860px) {
