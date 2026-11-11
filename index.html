@@ -44,7 +44,7 @@
 
       <figure class="radar-wrap">
         <svg id="radar" class="radar" viewBox="0 0 400 400" role="img" aria-label="เรดาร์ repo แบ่งตามหมวดและอายุที่เก็บ"></svg>
-        <figcaption class="radar-legend">
+        <figcaption class="radar-legend" id="legend">
           มุมคือหมวด ยิ่งใกล้ศูนย์กลางยิ่งเพิ่งเก็บ จุดใหญ่คือดาวเยอะ
         </figcaption>
       </figure>
@@ -53,7 +53,7 @@
     <section class="list" aria-label="รายการ repo">
       <div class="list-head">
         <h2 id="listTitle">ทั้งหมด</h2>
-        <label class="sort">
+        <label class="sort" id="sortWrap">
           <span>เรียงตาม</span>
           <select id="sort">
             <option value="added">เก็บล่าสุด</option>
@@ -65,14 +65,14 @@
       </div>
       <div class="grid" id="grid"></div>
       <div class="empty" id="empty" hidden>
-        <p>ไม่เจอ repo ที่ตรงกับคำค้นนี้</p>
-        <p class="muted">ลองคำที่สั้นลง ใช้ภาษาอังกฤษ หรือเอาแท็กที่เลือกออก</p>
+        <p class="empty-title" id="emptyTitle"></p>
+        <p class="empty-hint" id="emptyHint"></p>
       </div>
     </section>
   </main>
 
   <dialog id="detail" class="detail" aria-labelledby="dTitle">
-    <form method="dialog" class="detail-close"><button aria-label="ปิด">✕</button></form>
+    <form method="dialog" class="detail-close"><button aria-label="ปิด"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></form>
     <div id="detailBody"></div>
   </dialog>
 

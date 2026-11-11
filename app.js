@@ -24,6 +24,7 @@
   };
 
   const DAY = 864e5;
+  const EDIT_URL = "https://github.com/wutstack/githubradar/edit/main/data/repos.json";
   const now = Date.now();
   const fmtDate = new Intl.DateTimeFormat("th-TH", { dateStyle: "medium" });
   const fmtNum = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
@@ -219,6 +220,11 @@
       root.append(g);
     }
     root.append(svg("circle", { cx: C, cy: C, r: 2.5, fill: "#F0A93B" }));
+    if (!state.items.length) {
+      const t = svg("text", { class: "radar-idle", x: C, y: C + 28, "text-anchor": "middle" });
+      t.textContent = "รอสัญญาณแรก";
+      root.append(t);
+    }
 
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduce) requestAnimationFrame(() => sweep.classList.add("run"));
@@ -331,9 +337,15 @@
     $("#grid").replaceChildren(...list.map(card));
     $("#empty").hidden = list.length > 0;
     const none = state.items.length === 0;
-    $("#empty").children[0].textContent = none ? "ยังไม่มี repo ในคลัง" : "ไม่เจอ repo ที่ตรงกับคำค้นนี้";
-    $("#empty").children[1].hidden = none;
-    $("#dig").disabled = none;
+    $("#emptyTitle").textContent = none ? "ยังไม่มี repo ในคลัง" : "ไม่เจอ repo ที่ตรงกับคำค้นนี้";
+    $("#emptyHint").replaceChildren(...(none
+      ? ["repo ที่เพิ่มใน ", el("a", { href: EDIT_URL, target: "_blank", rel: "noopener", text: "data/repos.json" }), " จะขึ้นที่นี่และบนเรดาร์"]
+      : ["ลองคำที่สั้นลง ใช้ภาษาอังกฤษ หรือเอาแท็กที่เลือกออก"]));
+    // ไม่มีข้อมูล: ซ่อนตัวควบคุมที่ยังไม่มีอะไรให้ทำ
+    $("#dig").hidden = none;
+    $("#sortWrap").hidden = none;
+    $("#legend").hidden = none;
+    document.body.classList.toggle("is-empty", none);
     $("#clear").hidden = !filtering;
     $("#listTitle").textContent = filtering ? `เจอ ${list.length} รายการ` : "ทั้งหมด";
     $("#count").textContent = `${state.items.length} repo ที่เก็บไว้`;
