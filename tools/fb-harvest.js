@@ -72,20 +72,73 @@
 
   /* ---------- round 1: scroll profile ---------- */
   const ownSlug = location.pathname.split("/").filter(Boolean)[0] || "";
-  const topArticles = () => [...document.querySelectorAll('[role="article"]')].filter((a) => !a.parentElement.closest('[role="article"]'));
+  // Facebook เปลี่ยนโครงหน้าบ่อย ลองหลายแบบ แล้วเลือกเฉพาะชั้นนอกสุด
+  const UNIT = '[aria-posinset], [data-pagelet^="TimelineFeedUnit"], [data-pagelet*="FeedUnit"], [role="article"]';
+  const mainRoot = () => document.querySelector('[role="main"]') || document.body;
+  const STORY = '[data-ad-rendering-role="story_message"], [data-ad-preview="message"]';
+  const NAME = '[data-ad-rendering-role="profile_name"]';
+  // โพสต์แต่ละอัน (รวมโพสต์ต้นทางที่ถูกแชร์) = กล่องเล็กสุดที่มีทั้งข้อความโพสต์และชื่อคนโพสต์
+  const storyUnits = () => {
+    const out = new Set();
+    mainRoot().querySelectorAll(STORY).forEach((m) => {
+      let n = m;
+      for (let i = 0; i < 30 && n && n !== document.body; i++) {
+        n = n.parentElement;
+        if (n && n.querySelector(NAME)) { out.add(n); break; }
+      }
+    });
+    return [...out];
+  };
+  const topArticles = () => {
+    const all = [...mainRoot().querySelectorAll(UNIT)];
+    const outer = all.filter((a) => !a.parentElement.closest(UNIT) && (a.innerText || "").length > 20);
+    return [...storyUnits().map((u) => ({ el: u, story: true })), ...outer.map((u) => ({ el: u, story: false }))];
+  };
+  const debug = { units: 0, unitsMax: 0, seeMore: 0, pageLinks: 0, rounds: 0 };
 
-  async function scanArticle(art) {
+  const clickSeeMore = async (root) => {
+    const btns = [...root.querySelectorAll('[role="button"], span, div')].filter((b) => b.children.length === 0 && !b.closest("a") && MORE_TEXT.test((b.innerText || "").trim()));
+    for (const b of btns) { b.click(); debug.seeMore++; await sleep(200); }
+  };
+  // ลิงก์เวลาโพสต์ของ Facebook ได้ URL จริงตอนเมาส์ชี้ จึงจำลองการชี้ก่อนอ่าน
+  const hoverLinks = async (root) => {
+    root.querySelectorAll("a").forEach((a) => {
+      const h = a.getAttribute("href") || "";
+      if (!h || h === "#" || h.includes("__cft__") || POST.test(a.href)) {
+        ["mouseover", "mouseenter", "focus"].forEach((t) => a.dispatchEvent(new MouseEvent(t, { bubbles: true })));
+      }
+    });
+    await sleep(300);
+  };
+
+  const isPhoto = (h) => /\/photo(?:\.php|\/)/i.test(h);
+  async function scanArticle({ el: art, story }) {
     if (art.dataset.radarDone) return;
     art.dataset.radarDone = "1";
-    for (const b of [...art.querySelectorAll('[role="button"]')].filter((b) => MORE_TEXT.test(b.innerText.trim()))) { b.click(); await sleep(250); }
+    await clickSeeMore(art);
+    await hoverLinks(art);
 
-    const postLinks = [...new Set([...art.querySelectorAll("a[href]")].map((a) => a.href).filter((h) => POST.test(h)).map(cleanUrl))];
+    // ลิงก์โพสต์จริงมาก่อนลิงก์รูป
+    const postLinks = [...new Set([...art.querySelectorAll("a[href]")].map((a) => a.href).filter((h) => POST.test(h)).map(cleanUrl))]
+      .sort((a, b) => isPhoto(a) - isPhoto(b));
+    const repos = linksIn(art);
+    const text = art.innerText || "";
+
+    if (story) {
+      const target = postLinks[0];
+      if (repos.size) { repos.forEach((r) => addFound(r, target || location.href, "post")); return; }
+      // กล่องที่ครอบโพสต์ต้นทางอีกชั้น (เช่นข้อความตอนแชร์) ไม่ต้องเข้าคิว เพราะโพสต์ต้นทางเข้าคิวเองแล้ว
+      const stories = Math.max(art.querySelectorAll('[data-ad-rendering-role="story_message"]').length, art.querySelectorAll('[data-ad-preview="message"]').length);
+      if (stories > 1) return;
+      if (target && HINT.test(text) && !pending.has(target)) pending.set(target, { url: target, text: snippet(text), done: false, result: null });
+      return;
+    }
+
+    // กล่องโพสต์ชั้นนอก: ถ้ามีโพสต์ย่อยที่จับได้แล้ว ให้เก็บแค่ลิงก์ ไม่ต้องเข้าคิวซ้ำ
     const own = postLinks[0];
     const original = postLinks.find((h) => h !== own && !(ownSlug && h.includes(`/${ownSlug}/`)));
-    const repos = linksIn(art);
     if (repos.size) { repos.forEach((r) => addFound(r, original || own || location.href, "post")); return; }
-
-    const text = art.innerText || "";
+    if (art.querySelector(STORY)) return;
     const target = original || own;
     if (target && (original || HINT.test(text)) && !pending.has(target)) {
       pending.set(target, { url: target, text: snippet(text), done: false, result: null });
@@ -95,7 +148,14 @@
   async function round1() {
     let last = 0, still = 0;
     for (let i = 0; i < 250 && still < 5 && !stop; i++) {
-      for (const art of topArticles()) await scanArticle(art);
+      const units = topArticles();
+      debug.units = units.length; debug.unitsMax = Math.max(debug.unitsMax, units.length); debug.rounds = i + 1;
+      for (const art of units) await scanArticle(art);
+      // ตัวสำรอง: สแกนทั้งหน้าเผื่อหาโพสต์ไม่เจอ
+      await clickSeeMore(mainRoot());
+      const pageRepos = linksIn(mainRoot());
+      debug.pageLinks = pageRepos.size;
+      pageRepos.forEach((r) => addFound(r, location.href, "page"));
       status(`รอบ 1: เลื่อนหน้า ${i + 1} — เจอลิงก์ ${found.size} repo, โพสต์ต้องเปิดดูคอมเมนต์ ${pending.size} อัน`);
       window.scrollTo(0, document.body.scrollHeight);
       await sleep(2200);
@@ -157,7 +217,11 @@
     const lines = [...found.values()].map((f) => `${f.repo}\t${f.via}\t${f.from}`);
     const missed = [...pending.values()].filter((p) => p.done && (!p.result || !p.result.length || p.result === "error"))
       .map((p) => `?\t${p.url}\t${p.text}`);
-    $o.value = ["# GitHub Radar harvest", ...lines, ...(missed.length ? ["# ไม่เจอลิงก์ในโพสต์เหล่านี้", ...missed] : [])].join("\n");
+    const main = mainRoot();
+    const diag = `# debug v3: rounds=${debug.rounds} units=${debug.unitsMax} pending=${pending.size} seeMore=${debug.seeMore} pageLinks=${debug.pageLinks}` +
+      ` posinset=${document.querySelectorAll("[aria-posinset]").length} story=${document.querySelectorAll('[data-ad-rendering-role="story_message"]').length} article=${document.querySelectorAll('[role="article"]').length}` +
+      ` anchors=${main.querySelectorAll("a").length} ghText=${(main.innerText.match(/github/gi) || []).length} main=${!!document.querySelector('[role="main"]')} path=${location.pathname}`;
+    $o.value = ["# GitHub Radar harvest", diag, ...lines, ...(missed.length ? ["# ไม่เจอลิงก์ในโพสต์เหล่านี้", ...missed] : [])].join("\n");
     $o.style.display = "block";
     status(`เสร็จ! ${found.size} repo` + (missed.length ? `, ${missed.length} โพสต์หาลิงก์ไม่เจอ` : "") + " — กดคัดลอก แล้ววางในแชทกับ Claude");
     $a.replaceChildren();
