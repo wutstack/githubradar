@@ -155,14 +155,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 24px 64px; }
 }
 .ghost:hover { border-color: var(--ink); }
 
-.sample-note {
-  margin: 0;
-  font-size: .9rem;
-  color: var(--muted);
-  border-left: 3px solid var(--amber);
-  padding: 2px 0 2px 12px;
-  max-width: 60ch;
-}
 
 /* ---------- radar ---------- */
 .radar-wrap { margin: 0; }

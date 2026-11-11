@@ -330,6 +330,10 @@
     const filtering = state.query.trim() || state.tags.size;
     $("#grid").replaceChildren(...list.map(card));
     $("#empty").hidden = list.length > 0;
+    const none = state.items.length === 0;
+    $("#empty").children[0].textContent = none ? "ยังไม่มี repo ในคลัง" : "ไม่เจอ repo ที่ตรงกับคำค้นนี้";
+    $("#empty").children[1].hidden = none;
+    $("#dig").disabled = none;
     $("#clear").hidden = !filtering;
     $("#listTitle").textContent = filtering ? `เจอ ${list.length} รายการ` : "ทั้งหมด";
     $("#count").textContent = `${state.items.length} repo ที่เก็บไว้`;
@@ -357,13 +361,6 @@
     }
     state.fuse = buildFuse();
     state.sectors = computeSectors();
-
-    const samples = state.items.filter((i) => i.sample).length;
-    if (samples) {
-      const note = $("#sampleNote");
-      note.textContent = `ตอนนี้เป็น repo ตัวอย่าง ${samples} รายการ จะแทนด้วยของที่คุณแชร์ไว้ใน Facebook`;
-      note.hidden = false;
-    }
 
     renderTags();
     drawRadar();
