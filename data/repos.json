@@ -1310,22 +1310,6 @@
     "added": "2026-11-11"
   },
   {
-    "repo": "rachatarath-wq/aipass-th-release",
-    "summary": "แอปเชื่อม TH-AI Passport (AiPASS) ให้เรียกใช้จาก Claude CLI ได้",
-    "tags": [
-      "ภาษาไทย",
-      "Agent Tools"
-    ],
-    "keywords": [
-      "aipass",
-      "ai passport",
-      "ไทย",
-      "claude cli"
-    ],
-    "note": "",
-    "added": "2026-11-11"
-  },
-  {
     "repo": "cathrynlavery/diagram-design",
     "summary": "Skill วาดไดอะแกรม 45 แบบเป็นไฟล์ HTML+SVG ไฟล์เดียว ตามสีแบรนด์ของเรา",
     "tags": [
