@@ -1,5 +1,335 @@
 [
   {
+    "repo": "thedotmack/claude-mem",
+    "summary": "ปลั๊กอินความจำข้ามเซสชันให้ agent เก็บทุกอย่างที่ทำ ย่อด้วย AI แล้วป้อนบริบทที่เกี่ยวข้องกลับในเซสชันถัดไป ใช้กับ Claude Code, Codex, Gemini และอื่นๆ",
+    "tags": [
+      "Agent Tools"
+    ],
+    "keywords": [
+      "ความจำ",
+      "จำข้ามเซสชัน",
+      "memory",
+      "long-term memory",
+      "context",
+      "claude code plugin"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "leisongde/ComfyUI-CapCut",
+    "summary": "โต๊ะตัดต่อวิดีโอในตัว ComfyUI ตัดต่อหลายแทร็ก สร้างวิดีโอด้วย MiniMax เปลี่ยนตัวคน และถ่ายท่าทางจากคลิปไปใส่ตัวละคร",
+    "tags": [
+      "Video",
+      "Tools"
+    ],
+    "keywords": [
+      "ตัดต่อวิดีโอ",
+      "comfyui",
+      "capcut",
+      "สร้างวิดีโอ",
+      "เปลี่ยนคน",
+      "motion transfer",
+      "ถ่ายท่าทาง"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "emollick/ai-portals",
+    "summary": "บินผ่านโลก 3D ที่ AI สร้างกว่า 471 โลกในเบราว์เซอร์ต่อกันไม่รู้จบผ่านประตูมิติ ทุกโลก เสียง และพื้นผิวสร้างด้วยโค้ดล้วน",
+    "tags": [
+      "3D",
+      "Learning"
+    ],
+    "keywords": [
+      "ประตูมิติ",
+      "portal",
+      "threejs",
+      "procedural",
+      "โลก 3d",
+      "ethan mollick"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "NVIDIA/SkillEvaluator",
+    "summary": "เฟรมเวิร์กของ NVIDIA ไว้ประเมิน skill และปลั๊กอินของ agent ทั้งคุณภาพ ความปลอดภัย การซ้ำซ้อน และผลจริงต่อพฤติกรรม agent พร้อมเทมเพลต CI",
+    "tags": [
+      "Skill",
+      "Dev Tools"
+    ],
+    "keywords": [
+      "ประเมิน skill",
+      "ทดสอบ skill",
+      "eval",
+      "benchmark",
+      "security scan",
+      "ci"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "plannotator/effective-html",
+    "summary": "ชุด skill ให้ agent ทำไฟล์ HTML ที่ใช้งานได้จริง ตั้งแต่ wireframe แผนงาน ไดอะแกรม ไปจนถึงต้นแบบที่กดเล่นได้",
+    "tags": [
+      "Skill",
+      "Design"
+    ],
+    "keywords": [
+      "html artifact",
+      "wireframe",
+      "prototype",
+      "ต้นแบบ",
+      "ไดอะแกรม",
+      "แผนงาน"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "google/elephant-goldfish-model",
+    "summary": "ปลั๊กอินของ Google ให้ agent ช่วยออกแบบซอฟต์แวร์ ช้างจำบริบทแล้วร่างสเปก ปลาทองตรวจสเปกด้วยสายตาใหม่ที่ไม่รู้บทสนทนาก่อนหน้า",
+    "tags": [
+      "Agent Tools",
+      "Skill"
+    ],
+    "keywords": [
+      "ช้าง",
+      "ปลาทอง",
+      "egm",
+      "spec",
+      "รีวิวเอกสาร",
+      "ออกแบบระบบ",
+      "design review"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "codepawl/crucible",
+    "summary": "เอนจิน 3D เรียลไทม์บนเว็บ น้ำหนักเบา มี MCP server ให้ AI agent จัดฉาก แสง และ export ได้เอง (ชื่อเดิม 67.js)",
+    "tags": [
+      "3D",
+      "Agent Tools"
+    ],
+    "keywords": [
+      "67js",
+      "67.js",
+      "3d engine",
+      "webgpu",
+      "mcp",
+      "threejs alternative",
+      "path tracing"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "molly554/whiteboard-ai-tutor",
+    "summary": "ครู AI ที่เขียน วาด และลบบนไวท์บอร์ดขณะสอน นักเรียนแทรกถามได้ พร้อมผลเทียบว่าโมเดลไหนสอนบนกระดานได้ดีที่สุด",
+    "tags": [
+      "Learning",
+      "AI Model"
+    ],
+    "keywords": [
+      "ครู ai",
+      "ไวท์บอร์ด",
+      "สอนคณิต",
+      "tutor",
+      "benchmark",
+      "gemini",
+      "deepseek"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "Robbyant/lingbot-touch",
+    "summary": "โมเดลพื้นฐานด้านสัมผัสสำหรับหุ่นยนต์ เรียนรู้จากเซนเซอร์สัมผัสหลายแบบ แล้วนำไปใช้กับมือหุ่นยนต์ตัวอื่นได้โดยไม่ต้องเทรนเพิ่ม",
+    "tags": [
+      "AI Model",
+      "Hardware"
+    ],
+    "keywords": [
+      "หุ่นยนต์",
+      "สัมผัส",
+      "tactile",
+      "มือหุ่นยนต์",
+      "robotics",
+      "jepa"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "Leonxlnx/escapement",
+    "summary": "หนังสั้น 36 วินาทีที่ Claude Code สร้างทั้งเรื่องโดยสั่ง Blender ผ่าน Python ทุกโมเดล แสง และกล้องเป็นโค้ด ไม่ดาวน์โหลดโมเดลเลย",
+    "tags": [
+      "Video",
+      "3D"
+    ],
+    "keywords": [
+      "หนังสั้น",
+      "blender",
+      "ภาพยนตร์",
+      "นาฬิกา",
+      "รถ",
+      "claude code"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "drost-ai/tinker-ai-skill",
+    "summary": "Skill ให้ agent นำเซสชัน Claude Code ของเราไปเทรนโมเดลของตัวเองด้วย Tinker แล้วได้ไฟล์ GGUF ไว้รันบนเครื่อง",
+    "tags": [
+      "Skill",
+      "AI Model"
+    ],
+    "keywords": [
+      "fine-tune",
+      "เทรนโมเดล",
+      "lora",
+      "tinker",
+      "gguf",
+      "llama.cpp",
+      "รันโมเดลบนเครื่อง"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "Nyxera0x/cutaway",
+    "summary": "Skill เปลี่ยนรูปภาพเดียวเป็นวัตถุ 3D ใน three.js ที่แยกชิ้นส่วนตัวเองได้ แล้วถ่ายเป็นวิดีโอ 60 fps พร้อมดนตรี",
+    "tags": [
+      "3D",
+      "Skill"
+    ],
+    "keywords": [
+      "แยกชิ้นส่วน",
+      "exploded view",
+      "รูปเป็น 3d",
+      "threejs",
+      "หุ่นยนต์สัตว์",
+      "วิดีโอ"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "alexeyw/lot-map",
+    "summary": "Mod ของ Claude Code แสดงแผนที่สดข้างแชต ให้เห็นว่า agent กำลังเรียกเครื่องมือ skill หรือ subagent ตัวไหนอยู่ ทำงานบนเครื่องล้วน",
+    "tags": [
+      "Agent Tools",
+      "Design"
+    ],
+    "keywords": [
+      "แผนที่",
+      "ดูสถานะ agent",
+      "claude code mod",
+      "observability",
+      "visualization"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "JDhruv14/line-art-animation",
+    "summary": "Skill และไลบรารี TypeScript ทำแอนิเมชันลายเส้น SVG คนเดิน ตอบสนองต่อเมาส์ และฉากเปลี่ยนจากกลางวันเป็นกลางคืน",
+    "tags": [
+      "Animation",
+      "Skill"
+    ],
+    "keywords": [
+      "ลายเส้น",
+      "line art",
+      "svg",
+      "แอนิเมชัน",
+      "กลางวันกลางคืน",
+      "ภาพวาดหมึก"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "HybridRobotics/supermimic",
+    "summary": "เทรนหุ่นยนต์ฮิวแมนนอยด์ให้เลียนท่าทางทั้งตัว ด้วย world model แบบ differentiable ตัวเดียว",
+    "tags": [
+      "AI Model",
+      "Hardware"
+    ],
+    "keywords": [
+      "หุ่นยนต์",
+      "humanoid",
+      "เลียนท่า",
+      "motion tracking",
+      "world model",
+      "unitree g1"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "panusbodee-owen/Power-Ai-Ranger-Skill",
+    "summary": "Skill ให้ Claude Code เป็นหัวหน้าทีม AI แบ่งงานให้ DeepSeek, Qwen, Nemotron ทำ แล้วตรวจงานกลับ พร้อมแดชบอร์ดสดและตัวกรองข้อมูลออกนอกเครื่อง",
+    "tags": [
+      "Skill",
+      "Agent Tools",
+      "ภาษาไทย"
+    ],
+    "keywords": [
+      "หัวหน้าทีม",
+      "หลายโมเดล",
+      "multi-agent",
+      "deepseek",
+      "qwen",
+      "dashboard",
+      "คนไทย"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "toyxyz/toyxyz_RGBMocap",
+    "summary": "แอป Windows จับท่าทางคนจากวิดีโอธรรมดาเป็นแอนิเมชันที่แก้ต่อได้ รันบนเครื่อง ใส่ตัวละครได้ และ export เป็น FBX/VMD",
+    "tags": [
+      "Animation",
+      "3D"
+    ],
+    "keywords": [
+      "mocap",
+      "จับท่าทาง",
+      "วิดีโอเป็นแอนิเมชัน",
+      "blender",
+      "metahuman",
+      "fbx",
+      "vmd"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
+    "repo": "Goblinmine/homelab-diagram",
+    "summary": "สคริปต์ Python วาดไดอะแกรมเครือข่าย homelab สไตล์ r/homelab จากไฟล์ YAML ออกมาเป็น SVG/PNG เขียนร่วมกับ Claude",
+    "tags": [
+      "Tools",
+      "Design"
+    ],
+    "keywords": [
+      "homelab",
+      "ไดอะแกรมเครือข่าย",
+      "network diagram",
+      "proxmox",
+      "yaml",
+      "svg"
+    ],
+    "note": "",
+    "added": "2026-11-22"
+  },
+  {
     "repo": "konlu/story-studio",
     "summary": "Skill ให้ Claude Code/Codex/Cursor ทำคลิปสั้นเล่าเรื่องประวัติศาสตร์ครบวงจร ตั้งแต่หาหัวข้อ เขียนบท พากย์เสียง ทำภาพ จนได้โปรเจกต์ CapCut (剪映)",
     "tags": [
