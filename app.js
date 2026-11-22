@@ -28,6 +28,16 @@
   const now = Date.now();
   const fmtDate = new Intl.DateTimeFormat("th-TH", { dateStyle: "medium" });
   const fmtNum = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
+  const fmtStamp = new Intl.DateTimeFormat("th-TH", { day: "numeric", month: "short", year: "2-digit" });
+  const stampParts = (d) => {
+    const p = fmtStamp.formatToParts(d), g = (t) => (p.find((x) => x.type === t) || {}).value || "";
+    return { day: g("day"), month: g("month"), year: g("year") };
+  };
+  // สีประจำแท็ก เรียงตามจำนวน repo ในแท็กนั้น ใช้ทั้งบนเรดาร์ ตัวกรอง และการ์ด
+  const HUES = ["#E8641E", "#1F5FA8", "#2E9E4F", "#8C3FA8", "#0E8C8C", "#C99A00", "#B4441F",
+    "#D6457A", "#5B6B8C", "#6B8E23", "#3F51B5", "#A0522D", "#00838F", "#7A7A7A"];
+  const hueOf = (t) => state.hues.get(t) || "#7A7A7A";
+  const STAR = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .9l2.2 4.6 5 .7-3.6 3.5.9 5L8 12.3 3.5 14.7l.9-5L.8 6.2l5-.7z"/></svg>';
   const rtf = new Intl.RelativeTimeFormat("th", { numeric: "auto" });
   const ago = (d) => {
     const days = Math.round((d - now) / DAY);
@@ -42,7 +52,7 @@
   const LEAD = /^(อันที่|ตัวที่|ที่เคย|ที่ใช้|ที่)/;
   const TAIL = /(ได้|ไว้|อยู่)$/;
 
-  const state = { items: [], tags: new Set(), query: "", sort: "added", fuse: null, sectors: [], picked: null, rank: new Map() };
+  const state = { items: [], tags: new Set(), query: "", sort: "added", fuse: null, sectors: [], picked: null, rank: new Map(), hues: new Map(), reg: new Map() };
 
   /* ---------------- data ---------------- */
   async function loadData() {
@@ -149,7 +159,7 @@
   }
 
   /* ---------------- radar ---------------- */
-  const C = 200, R = 142, DISK = 196;
+  const C = 200, R = 150, DISK = 194;
   const RINGS = [
     { days: 30, label: "เดือนนี้" },
     { days: 90, label: "3 เดือน" },
@@ -189,17 +199,26 @@
     const root = $("#radar");
     root.replaceChildren();
     const n = state.sectors.length;
-    root.append(svg("circle", { class: "disk", cx: C, cy: C, r: DISK }));
+    // วงนอกสองชั้นแบบตราประทับ
+    root.append(svg("circle", { class: "disk", cx: C, cy: C, r: DISK }),
+      svg("circle", { class: "rim", cx: C, cy: C, r: DISK }),
+      svg("circle", { class: "rim-in", cx: C, cy: C, r: DISK - 8 }));
 
-    RINGS.forEach((ring, i) => {
-      const r = (R / RINGS.length) * (i + 1);
-      root.append(svg("circle", { class: "ring", cx: C, cy: C, r }));
-    });
     for (let i = 0; i < n; i++) {
       const a = -Math.PI / 2 + ((Math.PI * 2) / n) * i;
       root.append(svg("line", { class: "spoke", x1: C, y1: C, x2: C + R * Math.cos(a), y2: C + R * Math.sin(a) }));
+    }
+    RINGS.forEach((ring, i) => {
+      const r = (R / RINGS.length) * (i + 1);
+      root.append(svg("circle", { class: "ring", cx: C, cy: C, r }));
+      const t = svg("text", { class: "ring-label", x: C + 4, y: C - r + 12 });
+      t.textContent = ring.label;
+      root.append(t);
+    });
+    for (let i = 0; i < n; i++) {
+      const a = -Math.PI / 2 + ((Math.PI * 2) / n) * i;
       const mid = a + Math.PI / n;
-      const lx = C + (R + 24) * Math.cos(mid), ly = C + (R + 24) * Math.sin(mid);
+      const lx = C + (R + 22) * Math.cos(mid), ly = C + (R + 22) * Math.sin(mid);
       const t = svg("text", {
         class: "sector-label", x: lx, y: ly + 4, "text-anchor": "middle",
         "data-tag": state.sectors[i],
@@ -210,22 +229,18 @@
 
     // sweep: one pass on load
     const sweep = svg("g", { class: "sweep" });
-    const grad = svg("defs");
-    grad.innerHTML = `<linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F0A93B" stop-opacity="0"/><stop offset="1" stop-color="#F0A93B" stop-opacity=".35"/></linearGradient>`;
-    root.append(grad);
     const wedge = 0.5;
     sweep.append(svg("path", {
       d: `M${C},${C} L${C + R * Math.cos(-wedge)},${C + R * Math.sin(-wedge)} A${R},${R} 0 0 1 ${C + R},${C} Z`,
-      fill: "url(#sw)",
     }));
-    sweep.append(svg("line", { x1: C, y1: C, x2: C + R, y2: C, stroke: "#F0A93B", "stroke-width": 1.5, opacity: .8 }));
+    sweep.append(svg("line", { x1: C, y1: C, x2: C + R, y2: C }));
     root.append(sweep);
 
     for (const it of state.items) {
       const { x, y } = position(it);
       const stars = it.meta.stars;
-      const r = stars == null ? 3.6 : Math.min(7, 2.8 + Math.log10(stars + 1) * 0.85);
-      const g = svg("g", { class: "blip", tabindex: "0", role: "button", "data-id": it.id, "aria-label": `${it.repo}: ${it.summary || ""}` });
+      const r = stars == null ? 3 : Math.min(7, 2 + Math.log10(stars + 1) * 0.9);
+      const g = svg("g", { class: "blip", tabindex: "0", role: "button", "data-id": it.id, "aria-label": `${it.repo}: ${it.summary || ""}`, style: `--h:${hueOf(it.tags[0])}` });
       const title = svg("title"); title.textContent = it.repo;
       g.append(title,
         svg("circle", { class: "halo", cx: x, cy: y, r: r * 2.4 }),
@@ -234,7 +249,7 @@
       g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetail(it); } });
       root.append(g);
     }
-    root.append(svg("circle", { cx: C, cy: C, r: 2.5, fill: "#F0A93B" }));
+    root.append(svg("circle", { class: "center", cx: C, cy: C, r: 3 }));
     if (!state.items.length) {
       const t = svg("text", { class: "radar-idle", x: C, y: C + 28, "text-anchor": "middle" });
       t.textContent = "รอสัญญาณแรก";
@@ -273,7 +288,7 @@
 
   function thumb(it) {
     const img = el("img", { src: og(it), alt: "", loading: "lazy", decoding: "async" });
-    const wrap = el("div", { class: "thumb" }, img);
+    const wrap = el("div", { class: "thumb", style: `--h:${hueOf(it.tags[0])}` }, img);
     img.addEventListener("error", () => {
       img.remove();
       wrap.append(el("div", { class: "fallback", "aria-hidden": "true", text: it.name.slice(0, 2).toUpperCase() }));
@@ -281,23 +296,46 @@
     return wrap;
   }
 
+  // ตราประทับวันที่เก็บ: วงกลมสองชั้นกับเส้นคลื่น
+  function postmark(it) {
+    const p = stampParts(it.added);
+    const box = el("div", { class: "postmark", "aria-hidden": "true" });
+    box.innerHTML = `<svg viewBox="0 0 100 100">` +
+      `<path class="pm-waves" d="M-66 30q8-6 16 0t16 0 16 0 16 0 6 0M-66 42q8-6 16 0t16 0 16 0 16 0 6 0M-66 54q8-6 16 0t16 0 16 0 16 0 6 0"/>` +
+      `<circle class="pm-ring" cx="50" cy="50" r="46"/><circle class="pm-ring2" cx="50" cy="50" r="39"/>` +
+      `<text class="pm-top" x="50" y="33">เก็บไว้</text><text class="pm-day" x="50" y="62">${p.day}</text>` +
+      `<text class="pm-my" x="50" y="78">${p.month} ${p.year}</text></svg>`;
+    return box;
+  }
+
+  const regNo = (it) => `RR ${String(state.reg.get(it.id) || 0).padStart(4, "0")}`;
+  const chips = (it) => el("div", { class: "chips" },
+    it.tags.map((t) => el("span", { class: "chip", style: `--h:${hueOf(t)}`, text: t })));
+
   function metaLine(it) {
     const m = it.meta, parts = [];
-    if (m.stars != null) parts.push(el("span", { class: "star", text: `★ ${fmtNum.format(m.stars)}` }));
+    if (m.stars != null) {
+      const s = el("span", { class: "star", title: `${m.stars.toLocaleString("en")} ดาว` });
+      s.innerHTML = STAR;
+      s.append(fmtNum.format(m.stars));
+      parts.push(s);
+    }
     if (m.language) parts.push(el("span", { text: m.language }));
+    if (m.pushed_at) parts.push(el("span", { text: `อัปเดต ${ago(new Date(m.pushed_at))}` }));
+    parts.push(el("span", { text: `เก็บ ${ago(it.added)}` }));
     if (m.archived) parts.push(el("span", { class: "warn", text: "เลิกพัฒนาแล้ว" }));
     if (m.missing) parts.push(el("span", { class: "warn", text: "หา repo ไม่เจอ" }));
-    parts.push(el("span", { text: `เก็บ ${ago(it.added)}` }));
     return el("div", { class: "meta" }, parts);
   }
 
   function card(it) {
     return el("button", { class: "card", type: "button", onclick: () => openDetail(it) },
-      thumb(it),
+      el("div", { class: "card-top" }, thumb(it), postmark(it)),
       el("div", { class: "card-body" },
+        el("span", { class: "reg", text: regNo(it) }),
         el("span", { class: "slug" }, `${it.owner}/`, el("b", { text: it.name })),
         el("p", { class: "summary", text: it.summary || it.description || "ยังไม่มีสรุป" }),
-        el("div", { class: "chips" }, it.tags.map((t) => el("span", { class: "chip", text: t }))),
+        chips(it),
         metaLine(it)));
   }
 
@@ -317,14 +355,16 @@
     if (it.source) links.push(el("a", { class: "btn btn-line", href: it.source, target: "_blank", rel: "noopener", text: "โพสต์ที่เจอ" }));
 
     $("#detailBody").replaceChildren(
-      thumb(it),
+      el("div", { class: "card-top" }, thumb(it), postmark(it)),
       el("div", { class: "d-body" },
         found ? el("p", { class: "d-found", text: `ขุดเจอ! เก็บไว้ตั้งแต่ ${ago(it.added)}` }) : null,
-        el("div", {}, el("div", { class: "owner", text: it.owner }), el("h3", { id: "dTitle", text: it.name })),
+        el("div", { class: "d-head" },
+          el("span", { class: "reg", text: regNo(it) }),
+          el("div", { class: "owner", text: it.owner }), el("h2", { id: "dTitle", text: it.name })),
         el("p", { class: "d-summary", text: it.summary || "ยังไม่มีสรุป" }),
         it.description ? el("p", { class: "d-desc", text: `คำอธิบายจากเจ้าของ: ${it.description}` }) : null,
         it.note ? el("p", { class: "d-note", text: it.note }) : null,
-        el("div", { class: "chips" }, it.tags.map((t) => el("span", { class: "chip", text: t }))),
+        chips(it),
         facts.length ? el("dl", { class: "d-facts" }, facts) : null,
         el("div", { class: "d-links" }, links)));
 
@@ -342,8 +382,15 @@
     $("#tags").replaceChildren(...sorted.map(([t, c]) =>
       el("button", {
         class: "tag", type: "button", "aria-pressed": String(state.tags.has(t)), "data-tag": t,
-        onclick: () => { state.tags.has(t) ? state.tags.delete(t) : state.tags.add(t); render(); },
-      }, t, el("small", { text: c }))));
+        style: `--h:${hueOf(t)}`,
+        // เลือกได้ทีละแท็ก กดแท็กใหม่คือเปลี่ยน กดแท็กเดิมซ้ำคือยกเลิก
+        onclick: () => {
+          const was = state.tags.has(t);
+          state.tags.clear();
+          if (!was) state.tags.add(t);
+          render();
+        },
+      }, el("span", { class: "sw", "aria-hidden": "true" }), el("span", { class: "name", text: t }), el("small", { text: c }))));
   }
 
   function render() {
@@ -363,7 +410,7 @@
     document.body.classList.toggle("is-empty", none);
     $("#clear").hidden = !filtering;
     $("#listTitle").textContent = filtering ? `เจอ ${list.length} รายการ` : "ทั้งหมด";
-    $("#count").textContent = `${state.items.length} repo ที่เก็บไว้`;
+    $("#count").replaceChildren(el("b", { text: state.items.length }), "repo ที่เก็บไว้");
     $("#sort").disabled = !!state.query.trim();
     document.querySelectorAll(".tag").forEach((b) => b.setAttribute("aria-pressed", String(state.tags.has(b.dataset.tag))));
     updateRadar(list);
@@ -388,7 +435,15 @@
     }
     state.fuse = buildFuse();
     state.sectors = computeSectors();
-    [...state.items].sort((a, b) => b.added - a.added || a.id - b.id).forEach((it, i) => state.rank.set(it.id, i));
+    const newest = [...state.items].sort((a, b) => b.added - a.added || a.id - b.id);
+    newest.forEach((it, i) => {
+      state.rank.set(it.id, i);
+      state.reg.set(it.id, newest.length - i); // เลขลงทะเบียน: ตัวแรกที่เก็บคือ 1
+    });
+    const freq = new Map();
+    for (const it of state.items) for (const t of it.tags) freq.set(t, (freq.get(t) || 0) + 1);
+    [...freq.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .forEach(([t], i) => state.hues.set(t, HUES[i % HUES.length]));
 
     renderTags();
     drawRadar();
